@@ -1,4 +1,4 @@
-# MCP-Chainlit
+<h1 align="center"><strong>LLamaIndex-Chainlit-MCP-Tools <strong></h1>
 
 A powerful chatbot application built with Chainlit and LlamaIndex, featuring multiple LLM integrations, conversation history management, and various tools.
 
@@ -33,16 +33,31 @@ A powerful chatbot application built with Chainlit and LlamaIndex, featuring mul
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/mehmetalpayy/MCP-Chainlit.git
-cd MCP-Chainlit
+git clone https://github.com/mehmetalpayy/LLamaIndex-Chainlit-MCP-Tools.git
+cd LLamaIndex-Chainlit-MCP-Tools
 ```
 
-2. Install dependencies:
+2. Install uv (if not already installed):
 ```bash
-pip install -r requirements.txt
+# Windows (PowerShell)
+python -m pip install uv
+
+# Linux/MacOS
+python -m pip install uv
 ```
 
-3. Create `.env` file and add your API key:
+3. Create and activate virtual environment, then install dependencies:
+```bash
+# Create and activate virtual environment
+python -m venv .venv
+.venv\Scripts\activate  # Windows
+# source .venv/bin/activate  # Linux/MacOS
+
+# Install dependencies using uv
+uv pip install .
+```
+
+4. Create `.env` file and add your API key:
 ```bash
 # Create .env file
 echo "GEMINI_API_KEY=your_api_key_here" > .env
@@ -51,24 +66,38 @@ echo "GEMINI_API_KEY=your_api_key_here" > .env
 # GEMINI_API_KEY=your_api_key_here
 ```
 
-## Project Structure
+<h2>📁 Project Structure</h2>
 
-MCP-Chainlit/
-├── llms/ # LLM integrations
-│ ├── init.py
-│ ├── base.py # Base LLM configuration
-│ └── gemini.py # Google Gemini integration
-├── tools/ # Tool implementations
-│ ├── init.py
-│ └── math.py # Mathematical operations
-├── logger/ # Logging functionality
-│ ├── init.py
-│ ├── logging.py # Standard logging
-│ └── rich_logger.py # Rich console logging
-├── history/ # Conversation history
-│ ├── init.py
-│ └── local_memory.py # Local storage implementation
-└── main.py # Main application
+<pre>
+LLamaIndex-Chainlit-MCP-Tools/
+├── llms/
+│   ├── __init__.py
+│   ├── base.py
+│   ├── gemini.py
+│   ├── openai.py
+│   └── claude.py
+│
+├── tools/
+│   ├── __init__.py
+│   └── math.py
+│
+├── logger/
+│   ├── __init__.py
+│   ├── logging.py
+│   └── rich_logger.py
+│
+├── history/
+│   ├── __init__.py
+│   ├── local_memory.py
+│   └── sessions/
+│       └── {session_id}/
+│           └── messages.json
+│
+├── logs/
+│   └── YYYY-MM-DD.log
+│
+└── main.py
+</pre>
 
 
 ## Usage
